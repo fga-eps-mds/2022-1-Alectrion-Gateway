@@ -1,4 +1,4 @@
-describe('Name of the group', () => {
+describe('generico', () => {
   test('should ', () => {
     expect(1).toBe(1)
   })
