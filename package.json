@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/main.ts",
-    "test": "jest --passWithNoTests --no-cache --runInBand",
+    "test": "cross-env NODE_ENV=test jest --passWithNoTests --no-cache --runInBand",
     "test:watch": "npm t -- --watch",
     "test:staged": "npm t -- --findRelatedTests",
     "test:coverage": "npm t -- --coverage",
@@ -53,6 +53,7 @@
     "@types/dotenv": "^8.2.0",
     "@types/supertest": "^2.0.12",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-http-proxy": "^1.6.3",
