@@ -6,6 +6,10 @@ dotenv.config({
 })
 
 describe('selectProxyHost', () => {
+  test('Should return true if the proxy host is undefined', () => {
+    const result: any = selectProxyHost('')
+    expect(result).toBeTruthy()
+  })
   test('Should return user proxy', () => {
     const pathMocked = 'https://localhost:8080/users'
     const result = selectProxyHost(pathMocked)
