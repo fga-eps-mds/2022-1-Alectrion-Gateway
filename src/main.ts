@@ -10,13 +10,14 @@ app.use(cors())
 app.use(morgan('dev'))
 
 dotenv.config()
-const port = process.env.PORT
 
 app.use((req, res, next) => {
   httpProxy(selectProxyHost(req.path))(req, res, next)
   next()
 })
+const port = Number(process.env.PORT) || 4000
+const host = process.env.HOST || 'localhost'
 
-app.listen(port, () => {
+app.listen(port, host, () => {
   console.log(`rodando porta ${port}`)
 })

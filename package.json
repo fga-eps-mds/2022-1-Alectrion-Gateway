@@ -8,7 +8,7 @@
     "test": "cross-env NODE_ENV=test jest --passWithNoTests --no-cache --runInBand",
     "test:watch": "npm t -- --watch",
     "test:staged": "npm t -- --findRelatedTests",
-    "test:coverage": "npm t -- --coverage",
+    "test:coverage": "CI=true npm t -- --coverage",
     "test:integration": "npm t -- --config ./jest.integration.config.js"
   },
   "repository": {
