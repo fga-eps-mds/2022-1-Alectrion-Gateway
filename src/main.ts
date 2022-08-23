@@ -16,8 +16,7 @@ app.use((req, res, next) => {
   next()
 })
 const port = Number(process.env.PORT) || 4000
-const host = process.env.HOST || 'localhost'
 
-app.listen(port, host, () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`rodando porta ${port}`)
 })
