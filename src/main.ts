@@ -1,12 +1,24 @@
-import express, { json } from 'express'
-const port = 4000
+import express from 'express'
+import dotenv from 'dotenv'
+import cors from 'cors'
+import httpProxy from 'express-http-proxy'
+import { getHost, getUrComplement } from './redirect'
 
+dotenv.config()
 const app = express()
 
-app.use(json())
+app.use(cors())
 
-app.get('/', function (req, res) {
-  res.json({ message: 'SGPTI' }).status(200)
+app.use(
+  '/*',
+  httpProxy(getHost, {
+    proxyReqPathResolver: function (req) {
+      return getUrComplement(req)
+    }
+  })
+)
+const port = Number(process.env.PORT) || 4000
+
+app.listen(port, '0.0.0.0', () => {
+  console.log(`rodando porta ${port}`)
 })
-
-app.listen(port, () => console.log(`rodando ${port}`))

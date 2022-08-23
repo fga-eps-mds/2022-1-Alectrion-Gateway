@@ -1,0 +1,24 @@
+name: heroku-deploy
+on:
+ pull_request:
+  branches:
+     - main
+
+jobs:
+  deploy-heroku:
+    runs-on: ubuntu-latest
+    name: heroku deploy
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12 
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "alection-gateway"
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+          usedocker: true
+          docker_build_args: |
+            USER_API_URL
+            EQUIP_API_URL
+        env:
+          USER_API_URL: ${{ secrets.USER_API_URL }}
+          EQUIP_API_URL: ${{ secrets.EQUIP_API_URL }}
