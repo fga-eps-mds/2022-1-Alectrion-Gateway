@@ -1,28 +1,47 @@
-import dotenv from 'dotenv'
-import { selectProxyHost } from './redirect'
+import { Request } from 'express'
+import { getHost, getUrComplement } from './redirect'
 
-dotenv.config({
-  path: process.env.NODE === 'test' ? '.env.test' : '.env'
+const userMockedRequet = {
+  baseUrl: '/user/get',
+  url: '/?allUsers=true'
+} as Request
+
+const equipmentMockedRequest = {
+  baseUrl: '/equipment/get',
+  url: '/?all=true'
+} as Request
+
+const noSuportedMockedRequest = {
+  baseUrl: '/noService',
+  url: '/?all=true'
+} as Request
+
+describe('Should test get url complement', () => {
+  it('Should return user api url complement', () => {
+    const url = getHost(userMockedRequet)
+    expect(url).toEqual('http://localhost:4001')
+  })
+
+  it('Should return equipment api url', () => {
+    const url = getHost(equipmentMockedRequest)
+    expect(url).toEqual('http://localhost:4002')
+  })
+  it('Should return null api url', () => {
+    const url = getHost(noSuportedMockedRequest)
+    expect(url).toEqual('')
+  })
 })
 
-describe('selectProxyHost', () => {
-  test('Should return true if the proxy host is undefined', () => {
-    const result: any = selectProxyHost('')
-    expect(result).toBeTruthy()
+describe('Should test get url complement', () => {
+  it('Should return user api url', () => {
+    const complement = getUrComplement(userMockedRequet)
+    expect(complement).toEqual(userMockedRequet.baseUrl + userMockedRequet.url)
   })
-  test('Should return user proxy', () => {
-    const pathMocked = 'https://localhost:8080/users'
-    const result = selectProxyHost(pathMocked)
-    expect(result).toEqual(process.env.USER_URL)
-  })
-  test('Should return equipaments proxy', () => {
-    const pathMocked = 'https://localhost:8080/equipaments'
-    const result = selectProxyHost(pathMocked)
-    expect(result).toEqual(process.env.EQUIP_URL)
-  })
-  test('Should return default proxy', () => {
-    const pathMocked = 'https://localhost:8080/'
-    const result = selectProxyHost(pathMocked)
-    expect(result).toEqual(process.env.BASE_URL)
+
+  it('Should return equipment api url', () => {
+    const complement = getUrComplement(equipmentMockedRequest)
+    expect(complement).toEqual(
+      equipmentMockedRequest.baseUrl + equipmentMockedRequest.url
+    )
   })
 })
