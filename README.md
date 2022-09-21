@@ -6,6 +6,24 @@
 
 Alectrion é um sistema de controle e gerenciamento de inventário e ordens de serviços de TI.
 
+## Requisitos
+
+- node (versão 16.10.0 ou superiores)
+- yarn (versão 1.22.18)
+
+## Instalação
+
+1. Clone o projeto 
+> git clone https://github.com/fga-eps-mds/2022-1-Alectrion-Gateway
+2. Entre na pasta do projeto
+> cd 2022-1-Alectrion-Gateway
+5. instale as depencencias
+> yarn
+6. execute o projeto
+> yarn dev
+
+A aplicação sera iniciada na porta 4002
+
 ## Contribuir
 Para contribuir com esse projeto é importante seguir nosso [Guia de Contribuição](docs\documentation\Documentos\guia-contribuicao.md) do repositório e seguir nossa [Política de Branches](docs\documentation\Documentos\politicas-branch.md).
 
