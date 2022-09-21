@@ -24,7 +24,7 @@ Aplicação disponível em: [link da aplicação](https://alectrion-front.heroku
 6. execute o projeto
 > yarn dev
 
-A aplicação sera iniciada na porta 4002
+A aplicação sera iniciada na porta 4000
 
 ## Contribuir
 Para contribuir com esse projeto é importante seguir nosso [Guia de Contribuição](docs\documentation\Documentos\guia-contribuicao.md) do repositório e seguir nossa [Política de Branches](docs\documentation\Documentos\politicas-branch.md).
