@@ -9,22 +9,46 @@ Alectrion é um sistema de controle e gerenciamento de inventário e ordens de s
 Aplicação disponível em: [link da aplicação](https://alectrion-front.herokuapp.com/)
 
 ## Requisitos
-
-- node (versão 16.10.0 ou superiores)
-- yarn (versão 1.22.18)
-
-## Instalação
+- Local(sem docker)
+    - node (versão 16.10.0 ou superiores)
+    - yarn (versão 1.22.18)
+- Docker
+    - Docker e docker-compose
+## Instalação e Execução
 
 1. Clone o projeto 
-> git clone https://github.com/fga-eps-mds/2022-1-Alectrion-Gateway
-2. Entre na pasta do projeto
-> cd 2022-1-Alectrion-Gateway
-5. instale as depencencias
-> yarn
-6. execute o projeto
-> yarn dev
 
-A aplicação sera iniciada na porta 4000
+    > git clone https://github.com/fga-eps-mds/2022-1-Alectrion-Gateway
+
+2. Entre na pasta do projeto
+
+    > cd 2022-1-Alectrion-Gateway
+
+3. Crie um arquivo .env(variaveis de exemplo no .env.example deste repositório) adicionando as URL para os serviços
+ UserApi e EquipamentApi.
+
+### Local(Sem docker)
+
+4. Instale as depencencias
+        
+    > yarn
+
+5. Execute o projeto
+
+    > yarn dev
+
+
+### Docker
+
+4. Gerar imagem
+
+    > docker build -t alectrion-gateway .
+
+6. Rodar container
+    
+    > docker run --env-file .env -p 4000:4000 -d --name alectrion-gateway-container alectrion-gateway
+
+A aplicação será iniciada na porta 4000
 
 ## Contribuir
 Para contribuir com esse projeto é importante seguir nosso [Guia de Contribuição](docs\documentation\Documentos\guia-contribuicao.md) do repositório e seguir nossa [Política de Branches](docs\documentation\Documentos\politicas-branch.md).
