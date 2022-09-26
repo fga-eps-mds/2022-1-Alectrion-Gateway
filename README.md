@@ -33,7 +33,9 @@ Aplicação disponível em: [link da aplicação](https://alectrion-front.heroku
         
     > yarn
 
-5. Execute o projeto
+6. Crie um arquivo .env da mesma forma do arquivo .env.example
+
+7. Execute o projeto
 
     > yarn dev
 
